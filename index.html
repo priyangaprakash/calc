@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app = "MyApp">
+ <head>
+   <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js" ></script>  
+   <script src = "MyApp.js"></script>
+   <script src = "myctrl.js"></script>
+ </head>
+
+ <body ng-controller = "myctrl">
+ <div class="tab">
+  <button class="tablinks" onclick = "open(event,'P_Calci')">Home</button>
+  <button class="tablinks" onclick = "open(event,'P_Calci')">P_Calci</button>
+  <button class="tablinks" onclick = "open(event,'P_Calci')">Calculator</button>
+</div>
+<div id = "P_Calci" class = "tabcontent">
+  Please Enter your Name: <input type ="text" ng-model = "name" name = "R"/>
+  Hi..{{name}}
+  <p>
+   Enter your last Date : <input type = "date" ng-model = "txtDate"/>
+  </p>
+  <p>
+    Approx Days for next chums : <input type = "number" ng-model = "numDate"/>
+  </p>
+  <p>
+    <button ng-click = "getApprox()">Get you next date</button>
+  </p>
+  <p>
+     The next Periods  is on {{ans | date:"dd/MM/yyyy"}}.
+  </p>
+</div>
+
+<script>
+function open(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+ </body>
+</html>
